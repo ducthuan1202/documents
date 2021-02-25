@@ -1,6 +1,5 @@
-# Hướng dẫn sử dụng GIT trong dự án
+# GIT - Ví dụ cơ bản
 
-## Ví dụ cơ bản
 Bài này yêu cầu nắm rõ về quy tắc đặt bên branch. Nếu chưa nắm rõ vui lòng xem lại bài [Các quy tắc chung](git-convention.md) để hiểu rõ.
 
 Giả sử team của chúng ta sẽ triển khai 01 chức năng về quản lý user trên 01 hệ thống bất kỳ. Chức năng này sẽ bao gồm các tasks như sau:
@@ -21,8 +20,14 @@ Vậy quy trình làm việc với GIT cụ thể như sau:
 
 Sau khi tạo `repository` trên git, từng dev sẽ clone về máy local để bắt đầu thực hiện. Mặc định ban đầu, chúng ta 
 sẽ làm việc với git trên nhánh `master`.
+```bash
+git clone git@github.com:ducthuan1202/documents.git
+```
 
-Các dev cần tạo ra nhánh `develop` là nơi thực hiện merge code của từng dev sau khi hoàn thành feature.
+Các dev checkout sang nhánh `develop` là nơi thực hiện merge code của từng dev sau khi hoàn thành feature.
+```bash
+git checkout develop
+```
 
 Mỗi dev sẽ phải tạo ra 1 branch của riêng mình, đây là branch định danh cho mỗi dev và cũng là branch nền tảng cho các branch feature về sau.
 Quy ước đặt tên branch như sau:
@@ -30,14 +35,30 @@ Quy ước đặt tên branch như sau:
 - Trần Quỳnh => `quynht`
 - Nguyễn Thành Nam => `namnt`
 
-Như vậy, bây giờ git của chúng ta đã có 5 branch:
-```git
-* master
-develop
-quynht
-thuannd
-namnt
+```bash
+
+# tạo branch với dev Nguyễn Đức Thuận
+git checkout -b thuannd
+
+# tạo branch với dev Trần Quỳnh
+git checkout -b quynht
+
+# tạo branch với dev Nguyễn Thành Nam
+git checkout -b namnt
+
 ```
+
+Giả sử chúng ta đang ở máy của Thuận, chúng ta sẽ liệt kê các branchs như sau:
+```bash
+git branch
+```
+kết quả sẽ như sau:
+```git
+master
+develop
+* thuannd
+```
+dấu * phía trước branch name có nghĩa là chúng ta đang đứng ở trong nhánh `thuannd`
 
 ## Đặt tên nhành feature
 
